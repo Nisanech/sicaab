@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header" style="text-align: center">
+                    <br>
+                    <img src="{{ asset('../img/Logo-SICAAB.png') }}" height="100px" width="130px">
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">

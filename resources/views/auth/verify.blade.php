@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                
+                <div class="card-header">{{ __('Verificar correo eléctronico') }}
+                    <img src="{{ asset('img/Logo-SICAAB.png') }}" height="100px" width="130px">
+                </div>
 
                 <div class="card-body">
                     @if (session('resent'))

@@ -1,23 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+@section('contenido')
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="full-box page-header"></div>
 
-                    You are logged in!
-                </div>
+{{-- Inicio Contenido --}}
+<div class="container-fluid">
+    <div class="form-neon" autocomplete="off">
+        <fieldset>
+            <legend><i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard</legend>
+            <div class="card-body">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                ¡Bienvenido!
             </div>
-        </div>
+        </fieldset>
     </div>
 </div>
 @endsection
