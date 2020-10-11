@@ -49,98 +49,128 @@
                 <div class="full-box nav-lateral-bar"></div>
                 <nav class="full-box nav-lateral-menu">
                     <ul>
+                        @can('principal')
                         <li>
                             <a href="{{ url('/home') }}"><i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard</a>
                         </li>
-
+                        @endcan
+                        
                         <!-- Inicio Módulo Comercial -->
                         <li>
+                            @can('comercial')
                             <a href="#" class="nav-btn-submenu"><i class="fas fa-wallet fa-fw"></i> &nbsp; Comercial <i class="fas fa-chevron-down"></i></a>
+                            @endcan
                             <ul>
+                                @can('artes.index')
                                 <li>
                                     <a href="{{url('comercial/artes')}}"><i class="fas fa-paint-roller fa-fw"></i> &nbsp; Arte Producto</a>
                                 </li>
-
+                                @endcan
+                                @can('cliente.index')
                                 <li>
-                                    <a href="{{url('comercial/cliente')}}"><i class="fas fa-users fa-fw"></i> &nbsp; Clientes </a>
+                                    <a href="{{route('cliente.index')}}"><i class="fas fa-users fa-fw"></i> &nbsp; Clientes </a>
                                 </li>
-                                
+                                @endcan
+                                @can('estado_pedidos.index')
                                 <li>
                                     <a href="{{url('comercial/estado_pedidos')}}"><i class="fas fa-stopwatch fa-fw"></i> &nbsp; Estado de Pedido</a>
                                 </li> 
-                                
+                                @endcan
+                                @can('orden_compra.index')
                                 <li>
                                     <a href="{{url('comercial/orden_compra')}}"><i class="fas fa-file-invoice fa-fw"></i> &nbsp; Orden de Compra</a>
                                 </li> 
-                                
+                                @endcan
+                                @can('orden_pago.index')
                                 <li>
                                     <a href="{{url('comercial/orden_pago')}}"><i class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Orden de Pago</a>
                                 </li>
-                                
+                                @endcan
+                                @can('productos.index')
                                 <li>
                                     <a href="{{url('comercial/productos')}}"><i class="fas fa-boxes fa-fw"></i> &nbsp; Productos</a>
                                 </li>
-                                
+                                @endcan
+                                @can('proveedores.index')
                                 <li>
                                     <a href="{{url('comercial/proveedores')}}"><i class="fas fa-users fa-fw"></i> &nbsp; Proveedores</a>
                                 </li>
+                                @endcan
                             </ul>
                         </li>
                         <!-- Fin Módulo Comercial -->
                         
                         <!-- Inicio Módulo Producción -->
                         <li>
+                            @can('produccion')
                             <a href="#" class="nav-btn-submenu"><i class="fas fa-industry fa-fw"></i> &nbsp; Producción <i class="fas fa-chevron-down"></i></a>
+                            @endcan
                             <ul>
+                                @can('certificado_calidad.index')
                                 <li>
                                     <a href="{{url('produccion/certificado_calidad')}}"><i class="fas fa-clipboard-check fa-fw"></i> &nbsp; Certificado de Calidad</a>
                                 </li>
-                                
+                                @endcan
+                                @can('ficha_tecnica.index')
                                 <li>
                                     <a href="{{url('produccion/ficha_tecnica')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Ficha Técnica</a>
                                 </li>
-                                
+                                @endcan
+                                @can('orden_produccion.index')
                                 <li>
                                     <a href="{{url('produccion/orden_produccion')}}"><i class="fas fa-file-alt fa-fw"></i> &nbsp; Orden de Producción</a>
                                 </li>
-                                
+                                @endcan
+                                @can('planeacion.index')
                                 <li>
                                     <a href="{{url('produccion/planeacion')}}"><i class="fas fa-puzzle-piece fa-fw"></i> &nbsp; Planeación de Producción</a>
-                                </li> 
+                                </li>
+                                @endcan 
                             </ul>
                         </li>
                         <!-- Fin Módulo Producción -->
                         
                         <!-- Inicio Módulo Almacén y Logística -->
                         <li>
+                            @can('almacen')
                             <a href="#" class="nav-btn-submenu"><i class="fas fa-truck fa-fw"></i> &nbsp; Almacén <i class="fas fa-chevron-down"></i></a>
+                            @endcan
                             <ul>
+                                @can('remisiones.index')
                                 <li>
                                     <a href="{{url('almacen/remisiones')}}"><i class="fas fa-shipping-fast fa-fw"></i> &nbsp; Guía de Entrega </a>
                                 </li>
-                                
+                                @endcan
+                                @can('materiales.index')
                                 <li>
                                     <a href="{{url('almacen/materiales')}}"><i class="fas fa-boxes fa-fw"></i> &nbsp; Materiales</a>
                                 </li>
-                                
+                                @endcan
+                                @can('requerimiento_compra.index')
                                 <li>
                                     <a href="{{url('almacen/requerimiento_compra')}}"><i class="fas fa-file-invoice fa-fw"></i> &nbsp; Requerimiento Interno </a>
                                 </li>
+                                @endcan
                             </ul>
                         </li>
                         <!-- Fin Módulo Almacén y Logística -->
                         
                         <!-- Inicio Módulo Administrador -->
                         <li>
+                            @can('administrador')
                             <a href="#" class="nav-btn-submenu"><i class="fas fa-tools"></i> &nbsp; Administrador <i class="fas fa-chevron-down"></i></a>
+                            @endcan
                             <ul>
+                                @can('roles.index')
                                 <li>
                                     <a href="{{url('administrador/roles')}}"><i class="fas fa-user-shield"></i> &nbsp; Roles</a>
                                 </li>
-
+                                @endcan
+                                @can('usuarios.index')
                                 <li>
                                     <a href="{{url('administrador/usuarios')}}"><i class="fas fa-users"></i> &nbsp; Usuarios</a>
                                 </li>
+                                @endcan
                             </ul>
                         </li>
                         <!-- Fin Módulo Administrador -->

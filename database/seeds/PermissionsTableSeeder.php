@@ -13,6 +13,13 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         // Inicio permisos módulo usuarios
+
+        Permission::create([
+            'name'        => 'Acceso módulo administrador',
+            'slug'        => 'administrador',
+            'description' => 'Acceso al módulo administrador',
+        ]);
+
         // Inicio permisos usuarios
 
         Permission::create([
@@ -83,6 +90,13 @@ class PermissionsTableSeeder extends Seeder
         // Fin permisos módulo usuarios
 
         // Inicio permisos módulo comercial
+
+        Permission::create([
+            'name'        => 'Acceso módulo comercial',
+            'slug'        => 'comercial',
+            'description' => 'Acceso al módulo comercial',
+        ]);
+
         // Inicio permisos orden de compra
         
         Permission::create([
@@ -305,6 +319,13 @@ class PermissionsTableSeeder extends Seeder
         // Fin permisos módulo comercial
 
         // Inicio permisos módulo almacén y logística
+
+        Permission::create([
+            'name'        => 'Acceso módulo almacén y logística',
+            'slug'        => 'almacen',
+            'description' => 'Acceso al módulo almacén y logística',
+        ]);
+
         // Inicio permisos materiales
         
         Permission::create([
@@ -403,6 +424,13 @@ class PermissionsTableSeeder extends Seeder
         // Fin permisos módulo almacén y logística
 
         // Inicio permisos módulo producción
+
+        Permission::create([
+            'name'        => 'Acceso módulo producción',
+            'slug'        => 'produccion',
+            'description' => 'Acceso al módulo producción',
+        ]);
+
         // Inicio permisos ficha técnica
         
         Permission::create([
@@ -574,5 +602,14 @@ class PermissionsTableSeeder extends Seeder
         // Fin permisos orden de servicio
         // Fin permisos módulo producción
 
+        // Inicio permisos dashboard
+
+        Permission::create([
+            'name'        => 'Acceso dashboard',
+            'slug'        => 'principal',
+            'description' => 'Acceso a la vista principal del sistema',
+        ]);
+        
+        // Fin permisos dashboard
     }
 }
