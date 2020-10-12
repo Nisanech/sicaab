@@ -31,24 +31,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        @can('cliente.index')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cliente.index') }}">Clientes</a>
-                        </li>
-                        @endcan
-                        @can('users.index')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
-                        </li>
-                        @endcan
-                        @can('roles.index')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('roles.index') }}">Roles</a>
-                        </li>
-                        @endcan
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

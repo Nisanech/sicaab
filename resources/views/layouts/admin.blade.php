@@ -51,7 +51,7 @@
                     <ul>
                         @can('principal')
                         <li>
-                            <a href="{{ url('/home') }}"><i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard</a>
+                            <a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard</a>
                         </li>
                         @endcan
                         

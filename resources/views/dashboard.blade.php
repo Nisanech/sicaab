@@ -5,8 +5,10 @@
 <div class="full-box page-header"></div>
 
 {{-- Inicio Contenido --}}
-<div class="container-fluid" >
-    <div class="form-neon" autocomplete="off" style="background: none; border: none">
+<div class="container-fluid">
+    <div class="form-neon" autocomplete="off">
+        <fieldset>
+            <legend><i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard</legend>
             <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -14,8 +16,9 @@
                     </div>
                 @endif
 
-                <img src="{{ asset('img/welcome.png') }}" width="60%" height="60%" style="margin-left: 300px">
+                ¡Bienvenido!
             </div>
+        </fieldset>
     </div>
 </div>
 @endsection
