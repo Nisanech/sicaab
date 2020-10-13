@@ -4,7 +4,7 @@
 {{-- Inicio título de página --}}
 <div class="full-box page-header">
     <h3 class="text-left"> 
-        <i class="fas fa-edit"></i> &nbsp; EDITAR CLIENTE {{ $cliente->razon_social }}
+        <i class="fas fa-edit"></i> &nbsp; EDITAR CLIENTE <strong> &nbsp; {{ $cliente->razon_social }}</strong>
     </h3>
 </div>
 {{-- Fin título de página --}}

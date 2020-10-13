@@ -33,11 +33,6 @@
                 <tr class="text-center roboto-medium">
                     <th>NIT</th>
                     <th>RAZÓN SOCIAL</th>
-                    <th>DIRECCIÓN</th>
-                    <th>TELÉFONO</th>
-                    <th>CORREO</th>
-                    <th>PERSONA DE CONTACTO</th>
-                    <th>CIUDAD</th>
                     <th>CONDICIÓN DE PAGO</th>
                     <th>OPCIONES</th>
                 </tr>
@@ -49,17 +44,15 @@
                     <tr class="text-center">
                         <td>{{ $cli->nit }}</td>
                         <td>{{ $cli->razon_social }}</td>
-                        <td>{{ $cli->direccion }}</td>
-                        <td>{{ $cli->telefono }}</td>
-                        <td>{{ $cli->correo }}</td>
-                        <td>{{ $cli->persona_contacto }}</td>
-                        <td>{{ $cli->ciudad }}</td>
                         <td>{{ $cli->plazo }}</td>
 
                         {{-- Inicio opciones --}}
                         <td>
+                            @can('cliente.show')
+                                <a href="{{ URL::action('ClienteController@show',$cli->id_cliente) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                            @endcan
                             @can('cliente.edit')
-                                <a href="{{ URL::action('ClienteController@edit',$cli->id_cliente) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                                <a href="{{ URL::action('ClienteController@edit',$cli->id_cliente) }}" class="btn btn-dark"><i class="fas fa-edit"></i></a>
                             @endcan
                             @can('cliente.destroy')
                                 <a href="#" data-target="#modal-delete-{{ $cli->id_cliente }}" data-toggle="modal" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>

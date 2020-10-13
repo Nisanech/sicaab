@@ -91,6 +91,7 @@
             </div>
 
             {{-- Inicio botones --}}
+            <br>
             <p class="text-center">
                 <a href="{{ url('comercial/cliente') }}" type="reset" class="btn btn-raised btn-danger btn-sm"><i class="fas fa-window-close"></i> &nbsp; CANCELAR</a>
                 &nbsp; &nbsp;
