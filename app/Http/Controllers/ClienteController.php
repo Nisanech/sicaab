@@ -3,85 +3,99 @@
 namespace sicaab\Http\Controllers;
 
 use Illuminate\Http\Request;
+use sicaab\Http\Requests;
 use sicaab\Cliente;
+use Illuminate\Support\Facades\Redirect;
+use sicaab\Http\Requests\ClienteFormRequest;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    // Constructor
+    public function __construct()
     {
-        $cliente = Cliente::paginate();
-
-        return view('comercial/cliente.index', compact('cliente'));
+        $this->middleware('permission:cliente.index')->only('index');
+        $this->middleware('permission:cliente.create')->only(['create', 'store']);
+        $this->middleware('permission:cliente.show')->only('show');
+        $this->middleware('permission:cliente.edit')->only(['edit', 'update']);
+        $this->middleware('permission:cliente.destroy')->only('destroy');
+    }
+    
+    public function index(Request $request)
+    {
+        // Listar datos
+        if($request)
+        {
+            $query = trim($request -> get('buscarpor'));
+            $cliente = DB::table('clientes as cli')
+                        ->join('condiciones_pago as pag','cli.id_pago','=','pag.id_pago')
+                        ->select('cli.id_cliente','cli.nit','cli.razon_social','cli.direccion','cli.telefono','cli.correo','cli.persona_contacto','cli.ciudad','pag.plazo')
+                        ->where('razon_social','LIKE','%'.$query.'%')
+                        ->orWhere('nit','LIKE','%'.$query.'%')
+                        ->orderBy('razon_social','asc')
+                        ->paginate(10);
+            return view('comercial.cliente.index', ["cliente" => $cliente, "buscarpor" => $query]);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $pago=DB::table('condiciones_pago')->get();
+        return view("comercial.cliente.create",["pago"=>$pago]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ClienteFormRequest $request)
     {
-        //
+        $cliente = new Cliente;
+        $cliente->nit=$request->get('nit');
+        $cliente->razon_social=$request->get('razon_social');
+        $cliente->direccion=$request->get('direccion');
+        $cliente->telefono=$request->get('telefono');
+        $cliente->correo=$request->get('correo');
+        $cliente->persona_contacto=$request->get('persona_contacto');
+        $cliente->ciudad=$request->get('ciudad');
+        $cliente->id_pago=$request->get('id_pago');
+        $cliente->save();
+
+        return Redirect::to('comercial/cliente')
+        ->with('success','Cliente creado correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \sicaab\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cliente $cliente)
+    public function show($id)
     {
-        //
+        return view("comercial.cliente.show", ["cliente"=>Cliente::findOrFail($id)]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \sicaab\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
-        //
+        $cliente=Cliente::findOrFail($id);
+        $pago=DB::table('condiciones_pago')->get();
+        return view("comercial.cliente.edit", ["cliente"=>$cliente, "pago"=>$pago]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \sicaab\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClienteFormRequest $request, $id)
     {
-        //
+        $cliente=Cliente::findOrFail($id);
+        $cliente->nit=$request->get('nit');
+        $cliente->razon_social=$request->get('razon_social');
+        $cliente->direccion=$request->get('direccion');
+        $cliente->telefono=$request->get('telefono');
+        $cliente->correo=$request->get('correo');
+        $cliente->persona_contacto=$request->get('persona_contacto');
+        $cliente->ciudad=$request->get('ciudad');
+        $cliente->id_pago=$request->get('id_pago');
+        $cliente->update();
+
+        return Redirect::to('comercial/cliente')
+        ->with('success','Cliente actualizado correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \sicaab\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
-        //
+        $cliente=Cliente::findOrFail($id);
+        $cliente->delete();
+        return Redirect::to('comercial/cliente')
+        ->with('success', 'Eliminado correctamente');
     }
 }

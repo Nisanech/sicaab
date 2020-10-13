@@ -10,7 +10,7 @@ class Cliente extends Model
 
     protected $primaryKey="id_cliente";
 
-    public $timestamps=true;
+    public $timestamps=false;
 
     // Campos que se tendrán en cuenta en el modelo para el registro de datos
     protected $fillable = [

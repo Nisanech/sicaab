@@ -188,29 +188,39 @@
                 <a href="#" class="float-left show-nav-lateral">
                     <i class="fas fa-exchange-alt"></i>
                 </a>
-                <li class="nav-item dropdown" style="list-style: none">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="nav-item dropdown navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ __('Salir') }} &nbsp;&nbsp;&nbsp;
-                        <i class="fas fa-sign-out-alt"></i>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+                    
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();" style="color: black">
                             {{ __('Cerrar sesión') }}
-                        </a>
+                    </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form>
-                    </div>
-                </li>
+                    </form>
+                </div>
             </nav>
             <!-- Fin nav superior -->
             
             <!-- Contenido -->
             <!-- -- Se integran las plantillas blade de cada vista -- -->
+            @if(session('success'))
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="alert alert-success text-center">
+                                {{ session('success') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            
             @yield('contenido')
             <!-- Fin Contenido --> 
         </section>
