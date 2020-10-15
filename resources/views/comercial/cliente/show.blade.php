@@ -22,43 +22,43 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="nit" class=""><strong>NIT</strong></label>
-                            <p class="form-control text-center">{{ $cliente->nit }}</p>
+                            <p class="form-control">{{ $cliente->nit }}</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="razon_social" class=""><strong>Razón Social</strong></label>
-                            <p class="form-control text-center">{{ $cliente->razon_social }}</p>
+                            <p class="form-control">{{ $cliente->razon_social }}</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="direccion" class=""><strong>Dirección</strong></label>
-                            <p class="form-control text-center">{{ $cliente->direccion }}</p>
+                            <p class="form-control">{{ $cliente->direccion }}</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="telefono" class=""><strong>Teléfono</strong></label>
-                            <p class="form-control text-center">{{ $cliente->telefono }}</p>
+                            <p class="form-control">{{ $cliente->telefono }}</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="correo" class=""><strong>Correo Eléctronico</strong></label>
-                            <p class="form-control text-center">{{ $cliente->correo }}</p>
+                            <p class="form-control">{{ $cliente->correo }}</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="persona_contacto" class=""><strong>Persona de Contacto</strong></label>
-                            <p class="form-control text-center">{{ $cliente->persona_contacto }}</p>
+                            <p class="form-control">{{ $cliente->persona_contacto }}</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="ciudad" class=""><strong>Ciudad</strong></label>
-                            <p class="form-control text-center">{{ $cliente->ciudad }}</p>
+                            <p class="form-control">{{ $cliente->ciudad }}</p>
                         </div>
                     </div>
                 </div>

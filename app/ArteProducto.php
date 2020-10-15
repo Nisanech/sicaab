@@ -20,6 +20,7 @@ class ArteProducto extends Model
         'ancho',
         'imagen',
         'categoria',
+        'estado',
         'id_cliente'
     ];
 
