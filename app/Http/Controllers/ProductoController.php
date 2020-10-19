@@ -16,7 +16,11 @@ class ProductoController extends Controller
     // Constructor
     public function __construct()
     {
-        
+        $this->middleware('permission:productos.index')->only('index');
+        $this->middleware('permission:productos.create')->only(['create', 'store']);
+        $this->middleware('permission:productos.show')->only('show');
+        $this->middleware('permission:productos.edit')->only(['edit', 'update']);
+        $this->middleware('permission:productos.destroy')->only('destroy');
     }
 
     public function index(Request $request)
