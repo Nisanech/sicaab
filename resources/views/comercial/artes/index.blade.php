@@ -3,9 +3,9 @@
 
 {{-- Inicio título página --}}
 <div class="full-box page-header">
-    <div class="text-left">
+    <h3 class="text-left">
         <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE ARTES
-    </div>
+    </h3>
 </div>
 {{-- Fin título página --}}
 
