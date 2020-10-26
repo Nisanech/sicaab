@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Remision extends Model
 {
-    protected $table='remisiones';
+    protected $table='remision';
 
     protected $primaryKey="id_remision";
 
@@ -14,8 +14,10 @@ class Remision extends Model
 
     // Campos que se tendrán en cuenta en el modelo para el registro de datos
     protected $fillable = [
-        'cantidad_total',
-        'fecha_entrega'
+        'cnt_entregada',
+        'fecha_entrega',
+        'estado',
+        'id_ordenproduccion'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

@@ -59,31 +59,20 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
-                            <label for="correo" class="bmd-label-floating">Correo eléctronico</label>
-                            <input type="text" name="correo" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-group">
-                            <label for="persona_contacto" class="bmd-label-floating">Persona de Contacto</label>
-                            <input type="text" name="persona_contacto" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-group">
                             <label for="ciudad" class="bmd-label-floating">Ciudad</label>
                             <input type="text" name="ciudad" class="form-control">
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <label for="pago" class="bmd-label-floating">Condición de Pago</label>
-                            <select name="id_pago" class="form-control">
-                                <option>Seleccione la condición de pago</option>
-                                @foreach ($pago as $pag)
-                                    <option value="{{ $pag->id_pago }}">{{ $pag->plazo }}</option>
-                                @endforeach
-                            </select>
+                            <label for="correo" class="bmd-label-floating">Correo eléctronico</label>
+                            <input type="text" name="correo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="persona_contacto" class="bmd-label-floating">Persona de Contacto</label>
+                            <input type="text" name="persona_contacto" class="form-control">
                         </div>
                     </div>
                     

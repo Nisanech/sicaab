@@ -27,10 +27,10 @@ class MaterialFormRequest extends FormRequest
 
             // Campos requeridos en el formulario
 
-            'nombre_material' => 'required | max:120',
-            'unidad_medida'   => 'required | max:20',
-            'stock'           => 'required | max:11',
-            'categoria'       => 'required | max:45'
+            'nombre_material'      => 'required | max:120',
+            'unidad_medida'        => 'required | max:20',
+            'stock'                => 'required | max:11',
+            'id_categoriamaterial' => 'required'
         ];
     }
 }

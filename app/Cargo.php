@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cargo extends Model
 {
-    protected $table='cargos';
+    protected $table='cargo';
 
     protected $primaryKey="id_cargo";
 
@@ -14,8 +14,7 @@ class Cargo extends Model
 
     // Campos que se tendrán en cuenta en el modelo para el registro de datos
     protected $fillable = [
-        'cargo',
-        'area'
+        'cargo'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

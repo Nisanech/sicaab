@@ -26,10 +26,11 @@ class MaterialController extends Controller
         if($request)
         {
             $query=trim($request->get('buscarpor'));
-            $material=DB::table('materiales as mat')
-                        ->select('mat.id_material', 'mat.nombre_material', 'mat.unidad_medida', 'mat.categoria', 'mat.stock')
+            $material=DB::table('material as mat')
+                        ->join('categoria_material as cm', 'mat.id_categoriamaterial', '=', 'cm.id_categoriamaterial')
+                        ->select('mat.id_material', 'mat.nombre_material', 'mat.unidad_medida', 'cm.categoria', 'mat.stock')
                         ->where('mat.nombre_material','LIKE','%'.$query.'%')
-                        ->orWhere('mat.categoria','LIKE','%'.$query.'%')
+                        ->orWhere('cm.categoria','LIKE','%'.$query.'%')
                         ->orderBy('categoria', 'asc')
                         ->paginate(20);
             
@@ -39,7 +40,9 @@ class MaterialController extends Controller
 
     public function create()
     {
-        return view("almacen.materiales.create");
+        $categoria=DB::table('categoria_material')->get();
+
+        return view("almacen.materiales.create", ["categoria"=>$categoria]);
     }
 
     public function store(MaterialFormRequest $request)
@@ -49,7 +52,7 @@ class MaterialController extends Controller
         $material->nombre_material=$request->get('nombre_material');
         $material->unidad_medida=$request->get('unidad_medida');
         $material->stock=$request->get('stock');
-        $material->categoria=$request->get('categoria');
+        $material->id_categoriamaterial=$request->get('id_categoriamaterial');
         $material->save();
 
         return Redirect::to('almacen/materiales')
@@ -58,14 +61,18 @@ class MaterialController extends Controller
 
     public function show($id)
     {
-        return view("almacen.materiales.show", ["material"=>Material::findOrFail($id)]);
+        $material=Material::findOrFail($id);
+        $categoria=DB::table('categoria_material')->get();
+
+        return view("almacen.materiales.show", ["material"=>$material, "categoria"=>$categoria]);
     }
 
     public function edit($id)
     {
         $material=Material::findOrFail($id);
+        $categoria=DB::table('categoria_material')->get();
 
-        return view("almacen.materiales.edit", ["material"=>$material]);
+        return view("almacen.materiales.edit", ["material"=>$material, "categoria"=>$categoria]);
     }
 
     public function update(MaterialFormRequest $request, $id)
@@ -74,7 +81,7 @@ class MaterialController extends Controller
         $material->nombre_material=$request->get('nombre_material');
         $material->unidad_medida=$request->get('unidad_medida');
         $material->stock=$request->get('stock');
-        $material->categoria=$request->get('categoria');
+        $material->id_categoriamaterial=$request->get('id_categoriamaterial');
         $material->update();
 
         return Redirect::to('almacen/materiales')

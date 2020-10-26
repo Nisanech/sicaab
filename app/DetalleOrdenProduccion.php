@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetalleProduccion extends Model
 {
-    protected $table='detalle_produccion';
+    protected $table='detalle_orden_produccion';
 
     public $timestamps=false;
 
@@ -16,18 +16,18 @@ class DetalleProduccion extends Model
         'id_procesos',
         'inicio',
         'fin',
-        'tamaños_cortados',
-        'tamaños_impresos_buenos',
+        'tam_cortados',
+        'tam_impresos_buenos',
         'maculatura_impresion',
-        'tamaños_acabados_buenos',
+        'tam_acabados_buenos',
         'maculatura_acabados',
-        'tamaños_troquelados',
-        'tamaños_refilados',
-        'unidades_descartone',
-        'unidades_pegue',
-        'cantidad_aprobada',
-        'cantidad_rechazada',
-        'cantidad_entregada',
+        'tam_troquelados',
+        'tam_refilados',
+        'und_descartone',
+        'und_pegue',
+        'cnt_aprobada',
+        'cnt_rechazada',
+        'cnt_empacada',
         'responsable'
     ];
 

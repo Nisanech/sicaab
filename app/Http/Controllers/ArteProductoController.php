@@ -26,9 +26,10 @@ class ArteProductoController extends Controller
         if($request)
         {
             $query=trim($request->get('buscarpor'));
-            $arte=DB::table('arte_productos as art')
-                    ->join('clientes as cli','art.id_cliente','=','cli.id_cliente')
-                    ->select('art.id_arte','art.nombre_producto','art.alto','art.largo','art.ancho','art.imagen','cli.razon_social as cliente','art.categoria','art.estado')
+            $arte=DB::table('arte_producto as art')
+                    ->join('cliente as cli','art.id_cliente','=','cli.id_cliente')
+                    ->join('categoria_producto as cp', 'art.id_categoriaproducto', '=', 'cp.id_categoriaproducto')
+                    ->select('art.id_arte','art.nombre_producto','art.alto','art.largo','art.ancho','art.imagen','cli.razon_social as cliente','cp.categoria','art.estado')
                     ->where('art.nombre_producto','LIKE','%'.$query.'%')
                     ->orwhere('cli.razon_social','LIKE','%'.$query.'%')
                     ->orderBy('nombre_producto','asc')
@@ -40,8 +41,9 @@ class ArteProductoController extends Controller
 
     public function create()
     {
-        $cliente=DB::table('clientes')->get();
-        return view("comercial.artes.create",["cliente"=>$cliente]);
+        $cliente=DB::table('cliente')->get();
+        $categoria=DB::table('categoria_producto')->get();
+        return view("comercial.artes.create",["cliente"=>$cliente, "categoria"=>$categoria]);
     }
 
     public function store(ArteProductoFormRequest $request)
@@ -64,7 +66,7 @@ class ArteProductoController extends Controller
         // Fin Condicional para guardar la imagen del arte
 
         $arte->id_cliente=$request->get('id_cliente');
-        $arte->categoria=$request->get('categoria');
+        $arte->id_categoriaproducto=$request->get('id_categoriaproducto');
         $arte->estado='Activo';
         $arte->save();
 
@@ -75,18 +77,19 @@ class ArteProductoController extends Controller
     public function show($id)
     {
         $arte=ArteProducto::findOrFail($id);
-        $cliente=DB::table('clientes')->get();
-
+        $cliente=DB::table('cliente')->get();
+        $categoria=DB::table('categoria_producto')->get();
         
-        return view("comercial.artes.show",["arte"=>$arte, "cliente"=>$cliente]);
+        return view("comercial.artes.show",["arte"=>$arte, "cliente"=>$cliente, "categoria"=>$categoria]);
     }
 
     public function edit($id)
     {
         $arte=ArteProducto::findOrFail($id);
-        $cliente=DB::table('clientes')->get();
+        $cliente=DB::table('cliente')->get();
+        $categoria=DB::table('categoria_producto')->get();
 
-        return view("comercial.artes.edit",["arte"=>$arte, "cliente"=>$cliente]);
+        return view("comercial.artes.edit",["arte"=>$arte, "cliente"=>$cliente, "categoria"=>$categoria]);
     }
 
     public function update(ArteProductoFormRequest $request, $id)
@@ -108,7 +111,7 @@ class ArteProductoController extends Controller
         // Fin Condicional para guardar la imagen del arte
 
         $arte->id_cliente=$request->get('id_cliente');
-        $arte->categoria=$request->get('categoria');
+        $arte->id_categoriaproducto=$request->get('id_categoriaproducto');
         $arte->estado='Activo';
         $arte->update();
 

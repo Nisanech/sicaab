@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CondicionPago extends Model
 {
-    protected $table = 'condiciones_pago';
+    protected $table = 'condicione_pago';
 
     protected $primaryKey = "id_pago";
 

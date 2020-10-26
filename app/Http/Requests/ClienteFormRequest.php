@@ -34,7 +34,6 @@ class ClienteFormRequest extends FormRequest
             'correo'           => 'required | max:120',
             'persona_contacto' => 'required | max:120',
             'ciudad'           => 'required | max:45',
-            'id_pago'          => 'required'
         ];
     }
 }

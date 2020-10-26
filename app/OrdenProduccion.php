@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrdenProduccion extends Model
 {
-    protected $table='ordenes_produccion';
+    protected $table='ordene_produccion';
 
     protected $primaryKey="id_ordenproduccion";
 
@@ -14,9 +14,9 @@ class OrdenProduccion extends Model
 
     // Campos que se tendrán en cuenta en el modelo para el registro de datos
     protected $fillable = [
-        'fecha_apertura',
+        'fecha_abierta',
         'fecha_cierre',
-        'estado',
+        'id_estadoproduccion',
         'id_planeacion'
     ];
 

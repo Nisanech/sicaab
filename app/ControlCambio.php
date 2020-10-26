@@ -16,7 +16,7 @@ class ControlCambio extends Model
     protected $fillable = [
         'fecha_cambio',
         'descripcion',
-        'area_solicitante',
+        'solicitado',
         'id_fichatecnica'
     ];
 

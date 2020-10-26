@@ -33,7 +33,7 @@
                 <tr class="text-center roboto-medium">
                     <th>NIT</th>
                     <th>RAZÓN SOCIAL</th>
-                    <th>CONDICIÓN DE PAGO</th>
+                    <th>CIUDAD</th>
                     <th>OPCIONES</th>
                 </tr>
             </thead>
@@ -44,7 +44,7 @@
                     <tr class="text-center">
                         <td>{{ $cli->nit }}</td>
                         <td>{{ $cli->razon_social }}</td>
-                        <td>{{ $cli->plazo }}</td>
+                        <td>{{ $cli->ciudad }}</td>
 
                         {{-- Inicio opciones --}}
                         <td>

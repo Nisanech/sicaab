@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Material extends Model
 {
-    protected $table='materiales';
+    protected $table='material';
 
     protected $primaryKey="id_material";
 
@@ -17,7 +17,7 @@ class Material extends Model
         'nombre_material',
         'unidad_medida',
         'stock',
-        'categoria'
+        'id_categoriamaterial'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

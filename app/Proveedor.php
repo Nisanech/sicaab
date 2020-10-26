@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proveedor extends Model
 {
-    protected $table='proveedores';
+    protected $table='proveedor';
 
     protected $primaryKey="id_proveedor";
 
@@ -20,8 +20,7 @@ class Proveedor extends Model
         'telefono',
         'correo',
         'persona_contacto',
-        'tipo',
-        'id_pago'
+        'id_categoriaproveedor'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

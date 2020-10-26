@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CertificadoCalidad extends Model
 {
-    protected $table='certificados_calidad';
+    protected $table='certificado_calidad';
 
     protected $primaryKey="id_certificadocalidad";
 
@@ -15,6 +15,7 @@ class CertificadoCalidad extends Model
     // Campos que se tendrán en cuenta en el modelo para el registro de datos
     protected $fillable = [
         'fecha',
+        'estado',
         'id_ordenproduccion'
     ];
 

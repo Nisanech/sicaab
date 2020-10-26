@@ -29,9 +29,9 @@ class ArteProductoFormRequest extends FormRequest
             'largo'           => 'required | max:20',
             'ancho'           => 'required',
             'imagen'          => 'required | mimes:jpeg,bmp,jpg,png,PNG',
-            'categoria'       => 'required | max:45',
             'estado'          => 'max:20',
             'id_cliente'      => 'required',
+            'id_categoriaproducto'      => 'required',
         ];
     }
 }

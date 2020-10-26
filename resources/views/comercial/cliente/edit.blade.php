@@ -60,37 +60,23 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
+                                <label for="ciudad" class="bmd-label-floating">Ciudad</label>
+                                <input type="text" name="ciudad" class="form-control" value="{{ $cliente->ciudad }}">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
                                 <label for="correo" class="bmd-label-floating">Correo eléctronico</label>
                                 <input type="text" name="correo" class="form-control" value="{{ $cliente->correo }}">
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="persona_contacto" class="bmd-label-floating">Persona de Contacto</label>
                                 <input type="text" name="persona_contacto" class="form-control" value="{{ $cliente->persona_contacto }}">
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label for="ciudad" class="bmd-label-floating">Ciudad</label>
-                                <input type="text" name="ciudad" class="form-control" value="{{ $cliente->ciudad }}">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label for="pago" class="bmd-label-floating">Condición de Pago</label>
-                                <select name="id_pago" class="form-control">
-                                    <option>Seleccione la condición de pago</option>
-                                    @foreach ($pago as $pag)
-                                        @if ($pag->id_pago==$cliente->id_pago)
-                                            <option value="{{ $pag->id_pago }}" selected>{{ $pag->plazo }}</option>
-                                        @else
-                                            <option value="{{ $pag->id_pago }}">{{ $pag->plazo }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 {{-- Inicio botones --}}

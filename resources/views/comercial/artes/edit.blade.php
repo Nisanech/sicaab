@@ -4,7 +4,7 @@
 {{-- Inicio título página --}}
 <div class="full-box page-header">
     <h3 class="text-left">
-        <i class="fas fa-edit"></i> &nbsp; EDITAR ARTE DEL PRODUCTO {{ $arte->nombre_producto }}
+        <i class="fas fa-edit"></i> &nbsp; EDITAR ARTE DEL PRODUCTO &nbsp; <strong>{{ $arte->nombre_producto }}</strong>
     </h3>
 </div>
 {{-- Fin título página --}}
@@ -56,33 +56,19 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label for="categoria" class="bmd-label-floating">Categoría</label>
-                                <select name="categoria" class="form-control">
-                                    @if ($arte->categoria='Caja plegadiza')
-                                        <option value="Caja plegadiza" selected>Caja plegadiza</option>
-                                        <option value="Etiqueta">Etiqueta</option>
-                                        <option value="Publicomercial">Publicomercial</option>
-                                        <option value="Papelería">Papelería</option>
-                                    @elseif($arte->categoria='Etiqueta')
-                                        <option value="Caja plegadiza">Caja plegadiza</option>
-                                        <option value="Etiqueta" selected>Etiqueta</option>
-                                        <option value="Publicomercial">Publicomercial</option>
-                                        <option value="Papelería">Papelería</option>
-                                    @elseif($arte->categoria='Publicomercial')
-                                        <option value="Caja plegadiza">Caja plegadiza</option>
-                                        <option value="Etiqueta">Etiqueta</option>
-                                        <option value="Publicomercial" selected>Publicomercial</option>
-                                        <option value="Papelería">Papelería</option>
-                                    @else
-                                        <option value="Caja plegadiza">Caja plegadiza</option>
-                                        <option value="Etiqueta">Etiqueta</option>
-                                        <option value="Publicomercial">Publicomercial</option>
-                                        <option value="Papelería" selected>Papelería</option>
-                                    @endif
+                                <label for="id_categoriaproducto" class="bmd-label-floating">Categoría</label>
+                                <select name="id_categoriaproducto" class="form-control">
+                                    @foreach ($categoria as $cat)
+                                        @if($cat->id_categoriaproducto==$arte->id_categoriaproducto)
+                                            <option value="{{ $cat->id_categoriaproducto }}" selected>{{ $cat->categoria }}</option>
+                                        @else
+                                            <option value="{{ $cat->id_categoriaproducto }}">{{ $cat->categoria }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <legend><i class="fas fa-paint-brush"></i> &nbsp; Dimensiones</legend>
+                        <legend><i class="fas fa-paint-brush"></i> &nbsp; Dimensiones (mm)</legend>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label for="alto" class="bmd-label-floating">Alto</label>

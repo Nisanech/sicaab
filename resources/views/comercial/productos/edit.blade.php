@@ -34,6 +34,8 @@
 
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="col-12 col-md-2">
+                        </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label for="nombre_producto" class="bmd-label-floating">Nombre del Producto</label>
@@ -43,14 +45,6 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label for="categoria" class="bmd-label-floating">Categoría</label>
-                                @foreach($arte as $art)
-                                    <input type="text" name="categoria" value="{{ $art->categoria }}" class="form-control">
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label for="vlr_unitario" class="bmd-label-floating">($) Valor Unitario</label>
                                 <input type="text" name="vlr_unitario" value="{{ $producto->vlr_unitario }}" class="form-control">

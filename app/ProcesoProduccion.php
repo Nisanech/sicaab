@@ -14,7 +14,7 @@ class ProcesoProduccion extends Model
 
     // Campos que se tendrán en cuenta en el modelo para el registro de datos
     protected $fillable = [
-        'nombre_proceso',
+        'proceso',
         'id_tipoproceso'
     ];
 

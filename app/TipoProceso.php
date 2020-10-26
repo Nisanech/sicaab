@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoProceso extends Model
 {
-    protected $table='tipo_procesos';
+    protected $table='tipo_proceso';
 
     protected $primaryKey="id_tipoproceso";
 

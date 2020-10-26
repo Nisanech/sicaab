@@ -33,7 +33,7 @@
                 <tr class="text-center roboto-medium">
                     <th>NIT</th>
                     <th>RAZÓN SOCIAL</th>
-                    <th>CONDICIÓN DE PAGO</th>
+                    <th>TIPO PROVEEDOR</th>
                     <th>OPCIONES</th>
                 </tr>
             </thead>
@@ -44,7 +44,7 @@
                     <tr class="text-center">
                         <td>{{ $prove->nit }}</td>
                         <td>{{ $prove->razon_social }}</td>
-                        <td>{{ $prove->plazo }}</td>
+                        <td>{{ $prove->categoria }}</td>
 
                         {{-- Inicio opciones --}}
                         <td>

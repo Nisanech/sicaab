@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArteProducto extends Model
 {
-    protected $table='arte_productos';
+    protected $table='arte_producto';
 
     protected $primaryKey="id_arte";
 
@@ -19,9 +19,9 @@ class ArteProducto extends Model
         'largo',
         'ancho',
         'imagen',
-        'categoria',
         'estado',
-        'id_cliente'
+        'id_cliente',
+        'id_categoriaproducto'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

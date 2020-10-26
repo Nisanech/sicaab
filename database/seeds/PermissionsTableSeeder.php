@@ -158,9 +158,9 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name'        => 'Inactivar cliente',
+            'name'        => 'Eliminar cliente',
             'slug'        => 'cliente.destroy',
-            'description' => 'Inactivar el cliente',
+            'description' => 'Eliminar el cliente',
         ]);
 
         // Fin permisos clientes
@@ -192,9 +192,9 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name'        => 'Inactivar proveedor',
+            'name'        => 'Eliminar proveedor',
             'slug'        => 'proveedores.destroy',
-            'description' => 'Inactivar el proveedor',
+            'description' => 'Eliminar el proveedor',
         ]);
 
         // Fin permisos proveedores
@@ -226,9 +226,9 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name'        => 'Inactivar producto',
+            'name'        => 'Eliminar producto',
             'slug'        => 'productos.destroy',
-            'description' => 'Inactivar el producto',
+            'description' => 'Eliminar el producto',
         ]);
 
         // Fin permisos productos
@@ -352,6 +352,12 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Editar la información del material',
         ]);
 
+        Permission::create([
+            'name'        => 'Eliminar material',
+            'slug'        => 'materiales.destroy',
+            'description' => 'Eliminar el material',
+        ]);
+
         // Fin permisos materiales
 
         // Inicio permisos requerimiento de compra
@@ -458,9 +464,9 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name'        => 'Anular ficha técnica',
+            'name'        => 'Eliminar ficha técnica',
             'slug'        => 'ficha_tecnica.destroy',
-            'description' => 'Anular la ficha técnica',
+            'description' => 'Eliminar la ficha técnica',
         ]);
 
         // Fin permisos ficha técnica
@@ -492,9 +498,9 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name'        => 'Anular planeación de producción',
+            'name'        => 'Cancelar planeación de producción',
             'slug'        => 'planeacion.destroy',
-            'description' => 'Anular planeación de producción',
+            'description' => 'Cancelar planeación de producción',
         ]);
 
         // Fin permisos planeación de producción
@@ -560,46 +566,12 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name'        => 'Eliminar certificado de calidad',
+            'name'        => 'Anular certificado de calidad',
             'slug'        => 'certificado_calidad.destroy',
-            'description' => 'Eliminar certificado de calidad',
+            'description' => 'Anular certificado de calidad',
         ]);
 
         // Fin permisos certificado de calidad
-
-        // Inicio permisos orden de servicio
-        
-        Permission::create([
-            'name'        => 'Listar orden de servicio',
-            'slug'        => 'orden_servicio.index',
-            'description' => 'Lista todas las órdenes de servicio',
-        ]);
-
-        Permission::create([
-            'name'        => 'Crear orden de servicio',
-            'slug'        => 'orden_servicio.create',
-            'description' => 'Crear orden de servicio del producto a fabricar',
-        ]);
-
-        Permission::create([
-            'name'        => 'Ver detalle de la orden de servicio',
-            'slug'        => 'orden_servicio.show',
-            'description' => 'Ver el detalle de la orden de servicio',
-        ]);
-
-        Permission::create([
-            'name'        => 'Editar orden de servicio',
-            'slug'        => 'orden_servicio.edit',
-            'description' => 'Editar orden de servicio',
-        ]);
-
-        Permission::create([
-            'name'        => 'Cancelar orden de servicio',
-            'slug'        => 'orden_servicio.destroy',
-            'description' => 'Cancelar orden de servicio',
-        ]);
-
-        // Fin permisos orden de servicio
         // Fin permisos módulo producción
 
         // Inicio permisos dashboard

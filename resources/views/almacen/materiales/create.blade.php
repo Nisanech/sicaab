@@ -47,13 +47,11 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <label for="categoria" class="bmd-label-floating">Categoría</label>
-                            <select name="categoria" class="form-control">
-                                <option value="Caja empaque">Caja empaque</option>
-                                <option value="Insumo">Insumo</option>
-                                <option value="Papel">Papel</option>
-                                <option value="Papel empaque">Papel empaque</option>
-                                <option value="Tinta">Tinta</option>
+                            <label for="id_categoriamaterial" class="bmd-label-floating">Categoría</label>
+                            <select name="id_categoriamaterial" class="form-control">
+                                @foreach ($categoria as $cat)
+                                    <option value="{{ $cat->id_categoriamaterial }}">{{ $cat->categoria }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

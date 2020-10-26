@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaTecnica extends Model
 {
-    protected $table='fichas_tecnicas';
+    protected $table='ficha_tecnica';
 
     protected $primaryKey="id_fichatecnica";
 
@@ -19,7 +19,6 @@ class FichaTecnica extends Model
         'fecha_aprobacion',
         'registro_sanitario',
         'codigo_barras',
-        'montaje',
         'id_arte'
     ];
 

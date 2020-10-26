@@ -27,9 +27,9 @@ class ProveedorController extends Controller
         if ($request) 
         {
             $query = trim($request->get('buscarpor'));
-            $proveedor = DB::table('proveedores as prove')
-                            ->join('condiciones_pago as pag','prove.id_pago','=','pag.id_pago')
-                            ->select('prove.id_proveedor','prove.nit','prove.razon_social','prove.direccion','prove.telefono','prove.correo','prove.persona_contacto','prove.tipo','pag.plazo')
+            $proveedor = DB::table('proveedor as prove')
+                            ->join('categoria_proveedor as cat','prove.id_categoriaproveedor','=','cat.id_categoriaproveedor')
+                            ->select('prove.id_proveedor','prove.nit','prove.razon_social','prove.direccion','prove.telefono','prove.correo','prove.persona_contacto','cat.categoria')
                             ->where('razon_social','LIKE','%'.$query.'%')
                             ->orWhere('nit','LIKE','%'.$query.'%')
                             ->orderBy('razon_social','asc')
@@ -41,9 +41,9 @@ class ProveedorController extends Controller
 
     public function create()
     {
-        $pago=DB::table('condiciones_pago')->get();
+        $categoria=DB::table('categoria_proveedor')->get();
         
-        return view("comercial.proveedores.create", ["pago"=>$pago]);
+        return view("comercial.proveedores.create", ["categoria"=>$categoria]);
     }
 
     public function store(ProveedorFormRequest $request)
@@ -55,8 +55,7 @@ class ProveedorController extends Controller
         $proveedor->telefono=$request->get('telefono');
         $proveedor->correo=$request->get('correo');
         $proveedor->persona_contacto=$request->get('persona_contacto');
-        $proveedor->tipo=$request->get('tipo');
-        $proveedor->id_pago=$request->get('id_pago');
+        $proveedor->id_categoriaproveedor=$request->get('id_categoriaproveedor');
         $proveedor->save();
 
         return Redirect::to('comercial/proveedores')
@@ -71,9 +70,9 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         $proveedor=Proveedor::findOrFail($id);
-        $pago=DB::table('condiciones_pago')->get();
+        $categoria=DB::table('categoria_proveedor')->get();
 
-        return view("comercial.proveedores.edit", ["proveedor"=>$proveedor, "pago"=>$pago]);
+        return view("comercial.proveedores.edit", ["proveedor"=>$proveedor, "categoria"=>$categoria]);
     }
 
     public function update(ProveedorFormRequest $request, $id)
@@ -85,8 +84,7 @@ class ProveedorController extends Controller
         $proveedor->telefono=$request->get('telefono');
         $proveedor->correo=$request->get('correo');
         $proveedor->persona_contacto=$request->get('persona_contacto');
-        $proveedor->tipo=$request->get('tipo');
-        $proveedor->id_pago=$request->get('id_pago');
+        $proveedor->id_categoriaproveedor=$request->get('id_categoriaproveedor');
         $proveedor->update();
 
         return Redirect::to('comercial/proveedores')

@@ -22,7 +22,11 @@
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="razon_social"><strong>Cliente</strong></label>
-                            <p class="form-control">{{ $arte->razon_social }}</p>
+                            @foreach ($cliente as $cli)
+                                @if($cli->id_cliente==$arte->id_cliente)    
+                                    <p class="form-control" value="{{ $cli->id_cliente }}" selected>{{ $cli->razon_social }}</p>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
@@ -34,10 +38,14 @@
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="categoria"><strong>Categoría</strong></label>
-                            <p class="form-control">{{ $arte->categoria }}</p>
+                            @foreach ($categoria as $cat)
+                                @if($cat->id_categoriaproducto==$arte->id_categoriaproducto)
+                                    <p class="form-control" value="{{ $cat->id_categoriaproducto }}" selected>{{ $cat->categoria }}</p>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
-                    <legend><i class="fas fa-paint-brush"></i> &nbsp; Dimensiones</legend>
+                    <legend><i class="fas fa-paint-brush"></i> &nbsp; Dimensiones (mm)</legend>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="alto"><strong>Alto</strong></label>

@@ -34,7 +34,11 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="categoria" class=""><strong>Categoría</strong></label>
-                            <p class="form-control">{{ $material->categoria }}</p>
+                            @foreach ($categoria as $cat)
+                                @if($cat->id_categoriamaterial==$material->id_categoriamaterial)
+                                    <p class="form-control" value="{{ $cat->id_categoriamaterial }}" selected>{{ $cat->categoria }}</p>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-12 col-md-6">

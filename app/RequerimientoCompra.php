@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RequerimientoCompra extends Model
 {
-    protected $table='requerimientos_compra';
+    protected $table='requerimiento_compra';
 
     protected $primaryKey="id_requerimiento";
 
@@ -16,7 +16,8 @@ class RequerimientoCompra extends Model
     protected $fillable = [
         'fecha',
         'estado',
-        'id_proveedor'
+        'id_proveedor',
+        'id_pago'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

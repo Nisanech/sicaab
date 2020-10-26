@@ -51,16 +51,15 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
-                            <label for="categoria" class="bmd-label-floating">Categoría</label>
-                            <select name="categoria" class="form-control">
-                                <option value="Caja plegadiza">Caja plegadiza</option>
-                                <option value="Etiqueta">Etiqueta</option>
-                                <option value="Publicomercial">Publicomercial</option>
-                                <option value="Papelería">Papelería</option>
+                            <label for="id_categoriaproducto" class="bmd-label-floating">Categoría</label>
+                            <select name="id_categoriaproducto" class="form-control">
+                                @foreach ($categoria as $cat)
+                                    <option value="{{ $cat->id_categoriaproducto }}">{{ $cat->categoria }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                    <legend><i class="fas fa-paint-brush"></i> &nbsp; Dimensiones</legend>
+                    <legend><i class="fas fa-paint-brush"></i> &nbsp; Dimensiones (mm)</legend>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="alto" class="bmd-label-floating">Alto</label>

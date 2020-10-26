@@ -28,21 +28,20 @@ class ClienteController extends Controller
         if($request)
         {
             $query = trim($request -> get('buscarpor'));
-            $cliente = DB::table('clientes as cli')
-                        ->join('condiciones_pago as pag','cli.id_pago','=','pag.id_pago')
-                        ->select('cli.id_cliente','cli.nit','cli.razon_social','cli.direccion','cli.telefono','cli.correo','cli.persona_contacto','cli.ciudad','pag.plazo')
+            $cliente = DB::table('cliente as cli')
+                        ->select('cli.id_cliente','cli.nit','cli.razon_social','cli.direccion','cli.telefono','cli.correo','cli.persona_contacto','cli.ciudad')
                         ->where('razon_social','LIKE','%'.$query.'%')
                         ->orWhere('nit','LIKE','%'.$query.'%')
                         ->orderBy('razon_social','asc')
                         ->paginate(10);
+
             return view('comercial.cliente.index', ["cliente" => $cliente, "buscarpor" => $query]);
         }
     }
 
     public function create()
     {
-        $pago=DB::table('condiciones_pago')->get();
-        return view("comercial.cliente.create",["pago"=>$pago]);
+        return view("comercial.cliente.create");
     }
 
     public function store(ClienteFormRequest $request)
@@ -55,7 +54,6 @@ class ClienteController extends Controller
         $cliente->correo=$request->get('correo');
         $cliente->persona_contacto=$request->get('persona_contacto');
         $cliente->ciudad=$request->get('ciudad');
-        $cliente->id_pago=$request->get('id_pago');
         $cliente->save();
 
         return Redirect::to('comercial/cliente')
@@ -70,8 +68,8 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $cliente=Cliente::findOrFail($id);
-        $pago=DB::table('condiciones_pago')->get();
-        return view("comercial.cliente.edit", ["cliente"=>$cliente, "pago"=>$pago]);
+    
+        return view("comercial.cliente.edit", ["cliente"=>$cliente]);
     }
 
     public function update(ClienteFormRequest $request, $id)
@@ -84,7 +82,6 @@ class ClienteController extends Controller
         $cliente->correo=$request->get('correo');
         $cliente->persona_contacto=$request->get('persona_contacto');
         $cliente->ciudad=$request->get('ciudad');
-        $cliente->id_pago=$request->get('id_pago');
         $cliente->update();
 
         return Redirect::to('comercial/cliente')

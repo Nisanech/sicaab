@@ -28,10 +28,11 @@ class ProductoController extends Controller
         if($request)
         {
             $query = trim($request->get('buscarpor'));
-            $producto = DB::table('productos as pro')
-                        ->join('arte_productos as art','pro.id_arte','=','art.id_arte')
-                        ->join('clientes as cli','art.id_cliente','=','cli.id_cliente')
-                        ->select('pro.id_producto','art.nombre_producto','art.categoria','pro.vlr_unitario','cli.razon_social')
+            $producto = DB::table('producto as pro')
+                        ->join('arte_producto as art','pro.id_arte','=','art.id_arte')
+                        ->join('categoria_producto as cp', 'art.id_categoriaproducto', '=', 'cp.id_categoriaproducto')
+                        ->join('cliente as cli','art.id_cliente','=','cli.id_cliente')
+                        ->select('pro.id_producto','art.nombre_producto','cp.categoria','pro.vlr_unitario','cli.razon_social')
                         ->where('art.nombre_producto','LIKE','%'.$query.'%')
                         ->orwhere('cli.razon_social','LIKE','%'.$query.'%')
                         ->orderBy('razon_social','asc')
@@ -43,10 +44,11 @@ class ProductoController extends Controller
 
     public function create()
     {
-        $arte=DB::table('arte_productos')->get();
-        $cliente=DB::table('clientes')->get();
+        $arte=DB::table('arte_producto')->get();
+        $cliente=DB::table('cliente')->get();
+        $categoria=DB::table('categoria_producto')->get();
 
-        return view("comercial.productos.create",["arte"=>$arte, "cliente"=>$cliente]);
+        return view("comercial.productos.create",["arte"=>$arte, "cliente"=>$cliente, "categoria"=>$categoria]);
     }
 
     public function store(ProductoFormRequest $request)
@@ -69,10 +71,11 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $producto=Producto::findOrFail($id);
-        $arte=DB::table('arte_productos')->get();
-        $cliente=DB::table('clientes')->get();
+        $arte=DB::table('arte_producto')->get();
+        $cliente=DB::table('cliente')->get();
+        $categoria=DB::table('categoria_producto')->get();
 
-        return view("comercial.productos.edit", ["producto"=>$producto, "arte"=>$arte, "cliente"=>$cliente]);
+        return view("comercial.productos.edit", ["producto"=>$producto, "arte"=>$arte, "cliente"=>$cliente, "categoria"=>$categoria]);
     }
 
     public function update(ProductoFormRequest $request, $id)

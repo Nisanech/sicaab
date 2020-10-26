@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrdenCompra extends Model
 {
-    protected $table='ordenes_compra';
+    protected $table='ordene_compra';
 
     protected $primaryKey="id_ordencompra";
 
@@ -18,7 +18,8 @@ class OrdenCompra extends Model
         'fecha_solicitud',
         'fecha_entrega',
         'estado',
-        'id_cliente'
+        'id_cliente',
+        'id_pago'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

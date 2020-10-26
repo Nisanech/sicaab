@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    protected $table='clientes';
+    protected $table='cliente';
 
     protected $primaryKey="id_cliente";
 
@@ -21,7 +21,6 @@ class Cliente extends Model
         'correo',
         'persona_contacto',
         'ciudad',
-        'id_pago'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

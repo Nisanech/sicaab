@@ -27,14 +27,13 @@ class ProveedorFormRequest extends FormRequest
             
             // Campos requeridos en el formulario
 
-            'nit'              => 'required | max:45',
-            'razon_social'     => 'required | max:120',
-            'direccion'        => 'required | max:45',
-            'telefono'         => 'required | max:20',
-            'correo'           => 'required | max:120',
-            'persona_contacto' => 'required | max:120',
-            'tipo'             => 'required | max:20',
-            'id_pago'          => 'required',
+            'nit'                   => 'required | max:45',
+            'razon_social'          => 'required | max:120',
+            'direccion'             => 'required | max:45',
+            'telefono'              => 'required | max:20',
+            'correo'                => 'required | max:120',
+            'persona_contacto'      => 'required | max:120',
+            'id_categoriaproveedor' => 'required',
         ];
     }
 }
