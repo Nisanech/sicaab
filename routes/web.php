@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use sicaab\Http\Controllers\MessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,9 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('produccion/planeacion', 'PlaneacionController');
 
     // Fin rutas módulo producción
+    //rutas correo
+    Route::view('/contact', 'contact/contact')->name('contact');
+    Route::post('contact', [MessagesController::class, 'store']);
 });
 
 

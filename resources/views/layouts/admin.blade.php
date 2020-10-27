@@ -171,6 +171,10 @@
                                     <a href="{{url('administrador/usuarios')}}"><i class="fas fa-users"></i> &nbsp; Usuarios</a>
                                 </li>
                                 @endcan
+                                
+                                <li>
+                                    <a class="{{ request()->routeIs('contact')}}" href="/contact"><i class="fas fa-envelope"></i> &nbsp; Correo</a>
+                                </li>
                             </ul>
                         </li>
                         <!-- Fin Módulo Administrador -->
