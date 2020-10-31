@@ -8,13 +8,13 @@
 </head>
 <body>
 
-        <div></div>
-    <p>Recibiste un mensaje de: {{ $data['name'] }} -  {{$data['email']}}</p>
+    <div></div>
+    <p>Recibiste un mensaje de: {{ $data['name'] }}</p>
     <p><strong>Asunto:</strong>{{$data['subject'] }}</p>
     <p><strong>Contenido:</strong>{{$data['content'] }}</p>
 
-<h1>INNOVA GRAPHIC </h1>
-<P> GROUP SAS </P>
-<P> PRINT QUALITY AND MARKETING </P>
+<h1 class="text-center">INNOVA GRAPHIC GROUP SAS</h1>
+<P class="text-center"> PRINT QUALITY AND MARKETING </P>
+
 </body>
 </html>

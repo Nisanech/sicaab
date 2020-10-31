@@ -7,7 +7,8 @@
 {{-- Inicio Contenido --}}
 <div class="container-fluid" >
     <div class="form-neon" autocomplete="off" style="background: none; border: none">
-            <div class="card-body">
+            
+        <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}

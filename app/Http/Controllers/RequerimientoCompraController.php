@@ -31,18 +31,14 @@ class RequerimientoCompraController extends Controller
         if($request)
         {
             $query=trim($request->get('buscarpor'));
-            $requerimiento=DB::table('requerimientos_compra as rc')
-                            ->join('proveedores as prove', 'rc.id_proveedor', '=', 'prove.id_proveedor')
-                            ->join('condiciones_pago as cp', 'prove.id_pago', '=', 'cp.id_pago')
+            $requerimiento=DB::table('requerimiento_compra as rc')
+                            ->join('proveedor as prove', 'rc.id_proveedor', '=', 'prove.id_proveedor')
                             ->join('detalle_requerimiento_compra as drc', 'rc.id_requerimiento', '=', 'drc.id_requerimiento')
-                            ->select('prove.razon_social', 'cp.plazo', 'rc.id_requerimiento', 'rc.fecha', 'rc.estado',
-                                      DB::raw('sum(drc.cantidad * vlr_unitario) as subtotal'),
-                                      DB::raw('((sum(drc.cantidad * vlr_unitario)) * 0.19) as iva'),
-                                      DB::raw('((sum(drc.cantidad * vlr_unitario)) + ((sum(drc.cantidad * vlr_unitario)) * 0.19)) as total'))
+                            ->select('prove.razon_social', 'rc.id_requerimiento', 'rc.fecha', 'rc.estado')
                             ->where('rc.id_requerimiento', 'LIKE', '%'.$query.'%')
-                            ->orWhere('rc.estado', 'LIKE', '%'.$query.'%')
-                            ->orderBy('rc.id_requerimiento', 'desc')
-                            ->groupBy('rc.id_requerimiento', 'rc.fecha', 'prove.razon_social', 'rc.estado', 'cp.plazo')
+                            ->orWhere('prove.razon_social', 'LIKE', '%'.$query.'%')
+                            ->orderBy('rc.id_requerimiento', 'asc')
+                            ->groupBy('rc.id_requerimiento', 'rc.fecha', 'prove.razon_social', 'rc.estado')
                             ->paginate(10);
 
             return view('almacen.requerimiento_compra.index', ["requerimiento"=>$requerimiento, "buscarpor"=>$query]);
@@ -51,20 +47,22 @@ class RequerimientoCompraController extends Controller
 
     public function create()
     {
-        $proveedor=DB::table('proveedores as prove')
-                    ->where('tipo', '=', 'Material')
+        $proveedor=DB::table('proveedor as prove')
+                    ->where('categoria', '=', 'Material')
+                    ->join('categoria_proveedor as cat', 'prove.id_categoriaproveedor', '=', 'cat.id_categoriaproveedor')
                     ->select('prove.razon_social', 'prove.id_proveedor')
                     ->get();
         
-        $pago=DB::table('condiciones_pago as cp')
+        $pago=DB::table('condicion_pago as cp')
                     ->select('cp.tipo', 'cp.plazo', 'cp.id_pago')
                     ->get();
         
-        $material=DB::table('materiales as mat')
-                    ->select(DB::raw('CONCAT(mat.nombre_material, " ", mat.categoria) AS material'), 'mat.id_material')
+        $material=DB::table('material as mat')
+                    ->join('categoria_material as cat', 'mat.id_categoriamaterial', '=', 'cat.id_categoriamaterial')
+                    ->select(DB::raw('CONCAT(mat.nombre_material, " ", cat.categoria) AS material'), 'mat.id_material')
                     ->get();
 
-        return view("almacen.requerimiento_compra.create", ["proveedor"=>$proveedor, "pago"=>$pago, "proveedor"=>$material]);
+        return view("almacen.requerimiento_compra.create", ["proveedor"=>$proveedor, "pago"=>$pago, "material"=>$material]);
     }
 
     public function store(RequerimientoCompraFormRequest $request)
@@ -120,9 +118,9 @@ class RequerimientoCompraController extends Controller
 
     public function show($id)
     {
-        $requerimientos=DB::table('requerimientos_compra as rc')
-                            ->join('proveedores as prove', 'rc.id_proveedor', '=', 'prove.id_proveedor')
-                            ->join('condiciones_pago as cp', 'prove.id_pago', '=', 'cp.id_pago')
+        $requerimientos=DB::table('requerimiento_compra as rc')
+                            ->join('proveedor as prove', 'rc.id_proveedor', '=', 'prove.id_proveedor')
+                            ->join('condicion_pago as cp', 'rc.id_pago', '=', 'cp.id_pago')
                             ->join('detalle_requerimiento_compra as drc', 'rc.id_requerimiento', '=', 'drc.id_requerimiento')
                             ->select('prove.razon_social', 'cp.plazo', 'rc.id_requerimiento', 'rc.fecha', 'rc.estado',
                                       DB::raw('sum(drc.cantidad * vlr_unitario) as subtotal'),
@@ -133,7 +131,7 @@ class RequerimientoCompraController extends Controller
                             ->first();
 
         $detalles=DB::table('detalle_requerimiento_compra as drc')
-                    ->join('materiales as mat', 'drc.id_material', '=', 'mat.id_material')
+                    ->join('material as mat', 'drc.id_material', '=', 'mat.id_material')
                     ->select('mat.nombre_material', 'drc.cantidad', 'drc.vlr_unitario')
                     ->where('drc.id_requerimiento', '=', $id)
                     ->get();

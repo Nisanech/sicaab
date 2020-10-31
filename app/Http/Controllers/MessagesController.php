@@ -25,6 +25,7 @@ class MessagesController extends Controller
 
             
         }
-        return "Mensaje Enviado";
+        return view("/home")
+        ->with('success', 'Mensaje enviado');
     }
 }
