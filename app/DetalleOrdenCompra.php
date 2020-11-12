@@ -13,6 +13,7 @@ class DetalleOrdenCompra extends Model
     // Campos que se tendrán en cuenta en el modelo para el registro de datos
     protected $fillable = [
         'cantidad',
+        'vlr_unitario',
         'id_ordencompra',
         'id_producto'
     ];

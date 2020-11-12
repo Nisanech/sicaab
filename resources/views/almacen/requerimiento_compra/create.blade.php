@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label for="fecha" class="bmd-label-floating">Fecha</label>
                             &nbsp;
-                            <input type="datetime" name="fecha" class="form-control" placeholder="DD-MM-AAAA HH:MM">
+                            <input type="datetime" name="fecha" class="form-control" placeholder="dd-mm-aaaa hh:mm">
                         </div>
                     </div>
                 </div>
