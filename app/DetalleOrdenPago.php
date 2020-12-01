@@ -13,8 +13,8 @@ class DetalleOrdenPago extends Model
     // Campos que se tendrán en cuenta en el modelo para el registro de datos
     protected $fillable = [
         'id_ordenpago',
-        'id_ordencompra',
-        'id_remision',
+        'id_producto',
+        'vlr_unitario',
         'cantidad'
     ];
 

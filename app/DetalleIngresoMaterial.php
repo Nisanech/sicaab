@@ -14,8 +14,8 @@ class DetalleIngresoMaterial extends Model
     protected $fillable = [
         'id_ingreso',
         'id_material',
-        'id_requerimiento',
-        'cantidad'
+        'cantidad',
+        'vlr_compra'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos

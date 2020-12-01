@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrdenProduccion extends Model
 {
-    protected $table='ordene_produccion';
+    protected $table='orden_produccion';
 
     protected $primaryKey="id_ordenproduccion";
 

@@ -24,7 +24,6 @@ class DetallePlaneacion extends Model
         'total_formatos',
         'total_pliegos',
         'id_planeacion',
-        'id_fichatecnica',
         'id_ordencompra'
     ];
 

@@ -57,7 +57,7 @@ class OrdenCompraController extends Controller
 
         $producto=DB::table('producto as pro')
                         ->join('arte_producto as art', 'pro.id_arte', '=', 'art.id_arte')
-                        ->select('pro.id_producto', 'art.nombre_producto', 'pro.vlr_unitario')
+                        ->select('pro.id_producto', 'art.nombre_producto')
                         ->get();
 
         return view("comercial.orden_compra.create", ["cliente"=>$cliente, "pago"=>$pago, "producto"=>$producto]);
@@ -75,7 +75,6 @@ class OrdenCompraController extends Controller
             $compra->id_cliente=$request->get('id_cliente');
             $mytime=Carbon::now('Amercia/Bogota');
             $compra->fecha_solicitud=$mytime->toDateString();
-            $compra->fecha_entrega=$request->get('fecha_entrega');
             $compra->estado='Abierto';
             $compra->num_orden=$request->get('num_orden');
             $compra->id_pago=$request->get('id_pago');
@@ -103,13 +102,11 @@ class OrdenCompraController extends Controller
 
             // Confirma la transacción si no hay errores
             DB::commit();
+
         } catch (\Exception $e){
 
             // Si hay error anula la transacción
             DB::rollback();
-
-            return Redirect::to('comercial/orden_compra')
-        ->with('success', 'error');
         }
 
         return Redirect::to('comercial/orden_compra')

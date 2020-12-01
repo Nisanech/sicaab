@@ -4,7 +4,7 @@
 {{-- Inicio título página --}}
 <div class="full-box page-header">
     <h3 class="text-left">
-        <i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR ORDEN DE COMPRA
+        <i class="fas fa-plus fa-fw"></i> &nbsp; INGRESAR MATERIAL
     </h3>
 </div>
 {{-- Fin título página --}}
@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <div class="form-neon" autocomplete="off">
         <fieldset>
-            <legend><i class="fas fa-user fa-fw"></i> &nbsp; Información Cliente</legend>
+            <legend><i class="fas fa-shopping-cart"></i> &nbsp; Información de Compra</legend>
 
             {{-- Inicio validación de campos --}}
             @if(count($errors)>0)
@@ -27,61 +27,40 @@
             @endif
             {{-- Fin validación de campos --}}
 
-            {{-- Inicio fomulario --}}
-            {!! Form::open(array('url'=>'comercial/orden_compra', 'method'=>'POST', 'autocomplete'=>'off', 'files'=>'true')) !!}
-            {!! Form::token() !!}
+            {{-- Inicio formulario --}}
+            {!! Form::open(array('url'=>'almacen/ingreso', 'method'=>'POST', 'autocomplete'=>'off', 'files'=>'true')) !!}
+            {{ Form::token() }}
 
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-12 col-md-1"></div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
-                            <label for="id_cliente" class="bmd-label-floating">Cliente</label>
+                            <label for="num_factura" class='bmd-label-floating'>Número de Factura</label>
                             &nbsp;
-                            <select name="id_cliente" id="id_cliente" class="form-control">
-                                @foreach ($cliente as $cli)
-                                    <option value="{{ $cli->id_cliente }}">{{ $cli->razon_social }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" name="num_factura" class="form-control">
                         </div>
                     </div>
+                    <div class="col-12 col-md-1"></div>
+                    
                     <div class="col-12 col-md-4">
                         <div class="form-group">
-                            <label for="num_orden" class="bmd-label-floating">Número Orden de Compra</label>
+                            <label for="fecha" class="bmd-label-floating">Fecha</label>
                             &nbsp;
-                            <input type="text" name="num_orden" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-group">
-                            <label for="id_pago" class="bmd-label-floating">Condición de Pago</label>
-                            &nbsp;
-                            <select name="id_pago" id="id_pago" class="form-control">
-                                @foreach ($pago as $cp)
-                                    <option value="{{ $cp->id_pago }}">{{ $cp->plazo }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-2"></div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-group">
-                            <label for="fecha_solicitud" class="bmd-label-floating">Fecha Solicitud</label>
-                            &nbsp;
-                            <input type="datetime" name="fecha_solicitud" class="form-control" placeholder="dd-mm-aaaa hh:mm">
+                            <input type="date" name="fecha" class="form-control" placeholder="dd-mm-aaaa">
                         </div>
                     </div>
                     
-                    <div class="col-12 col-md-2"></div>
                 </div>
-                <legend><i class="fas fa-boxes fa-fw"></i> &nbsp; Detalle Orden de Compra</legend>
+                <legend><i class="fas fa-boxes fa-fw"></i> &nbsp; Detalle Ingreso de Material</legend>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label for="id_producto" class="bmd-label-floating">Producto</label>
-                                <select name="pid_producto" id="pid_producto" class="form-control selectpicker" data-live-search="true">
-                                    @foreach ($producto as $pro)
-                                            <option value="{{ $pro->id_producto }}">{{ $pro->nombre_producto }}</option>
+                                <label for="id_material" class="bmd-label-floating">Material</label>
+                                <select name="pid_material" id="pid_material" class="form-control selectpicker" data-live-search="true">
+                                    @foreach ($material as $mat)
+                                        <option value="{{ $mat->id_material }}">{{ $mat->nombre_material }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -94,8 +73,8 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label for="vlr_unitario">($) Valor Unitario</label>
-                                <input type="number" name="pvlr_unitario" id="pvlr_unitario" class="form-control">
+                                <label for="vlr_compra">($) Valor Unitario</label>
+                                <input type="number" name="pvlr_compra" id="pvlr_compra" class="form-control">
                             </div>
                         </div>
                         <div class="col-12 col-md-2">
@@ -104,13 +83,12 @@
                             </div>
                         </div>
                         <br>
-
-                        {{-- Inicio tabla detalle orden de compra --}}
+                        {{-- Inicio tabla detalle requerimiento de compra --}}
                         <div class="col-12 col-md-12">
-                            <table class="table table-striped table-bordered table-condensed table-hover" id="detalles">
+                            <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                                 <thead style="background-color: #275877; text-align: center">
                                     <th>OPCIONES</th>
-                                    <th>PRODUCTO</th>
+                                    <th>MATERIAL</th>
                                     <th>CANTIDAD</th>
                                     <th>($) VALOR UNITARIO</th>
                                     <th>($) SUBTOTAL</th>
@@ -127,7 +105,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{-- Fin tabla detalle orden de compra --}}
+                        {{-- Fin tabla detalle requerimiento de compra --}}
                     </div>
 
                     {{-- Inicio botones --}}
@@ -135,7 +113,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <br>
                     <p class="text-center">
-                        <a type="reset" href="{{ url('comercial/orden_compra') }}" class="btn btn-raised btn-danger btn-sm"><i class="fas fa-window-close"></i> &nbsp; CANCELAR</a>
+                        <a type="reset" href="{{url('almacen/ingreso')}}" class="btn btn-raised btn-danger btn-sm"><i class="fas fa-window-close"></i> &nbsp; CANCELAR</a>    
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="submit" class="btn btn-raised btn-info btn-sm" id="guardar"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
                     </p>
@@ -167,23 +145,23 @@
         subtotal = []; // Array para guardar el subtotal de cada material agregado al detalle
         $("#guardar").hide();
 
-        // Función agregar producto al detalle
+        // Función agregar material al detalle
         function agregar()
         {
-            id_producto=$("#pid_producto").val();
-            producto=$("#pid_producto option:selected").text();
+            id_material=$("#pid_material").val();
+            material=$("#pid_material option:selected").text();
             cantidad=$("#pcantidad").val();
-            vlr_unitario=$("#pvlr_unitario").val();
+            vlr_compra=$("#pvlr_compra").val();
 
             // Validación
-            if(id_producto!="" && cantidad!="" && cantidad>0 && vlr_unitario!="" && vlr_unitario>0)
+            if(id_material!="" && cantidad!="" && cantidad>0 && vlr_compra!="" && vlr_compra>0)
             {
-                subtotal[cont]=(cantidad * vlr_unitario);
+                subtotal[cont]=(cantidad * vlr_compra);
                 iva=(Number(iva) + Number(((subtotal[cont] * tasa)/100))).toFixed(2);
                 total=(Number(total) + Number((((subtotal[cont] * tasa)/100) + subtotal[cont]))).toFixed(2);
 
                 // Agregar filas
-                var fila='<tr style="text-align:center" class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger" value="eliminar" onclick="eliminar('+cont+');"><i class="fas fa-minus-square"></i></button></td><td><input type="hidden" name="id_producto[]" value="'+id_producto+'">'+producto+'</td><td><input name="cantidad[]" value="'+cantidad+'" class="input-group-text"></td><td><input name="vlr_unitario[]" value="'+vlr_unitario+'" class="input-group-text"></td><td>$ '+subtotal[cont]+'</td></tr>';
+                var fila='<tr style="text-align:center" class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger" value="eliminar" onclick="eliminar('+cont+');"><i class="fas fa-minus-square"></i></button></td><td><input type="hidden" name="id_material[]" value="'+id_material+'">'+material+'</td><td><input name="cantidad[]" value="'+cantidad+'" class="input-group-text"></td><td><input name="vlr_compra[]" value="'+vlr_compra+'" class="input-group-text"></td><td>$ '+subtotal[cont]+'</td></tr>';
                 cont++;
 
                 limpiar();
@@ -196,7 +174,7 @@
             }
             else
             {
-                alert("Error al agregar el material al detalle de compra. Por favor, revisa los datos ingresados");
+                alert("Error al agregar el material al detalle de ingreso. Por favor, revisa los datos ingresados");
             }
         }
 
@@ -204,7 +182,7 @@
         function limpiar()
         {
             $("#pcantidad").val("");
-            
+            $("#pvlr_compra").val("");
         }
 
         // Función ocultar botones si no hay datos en el detalle

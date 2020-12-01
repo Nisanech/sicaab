@@ -17,7 +17,7 @@ use Illuminate\Support\Collection;
 class RequerimientoCompraController extends Controller
 {
     //Constructor
-    public function __contruct()
+    public function __construct()
     {
         $this->middleware('permission:requerimiento_compra.index')->only('index');
         $this->middleware('permission:requerimiento_compra.create')->only(['create', 'store']);

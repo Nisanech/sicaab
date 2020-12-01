@@ -13,7 +13,14 @@
 <div class="container-fluid">
     <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-            <a href="{{ url('almacen/materiales/create') }}"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR MATERIAL</a>
+            <a href="{{ url('almacen/materiales/create') }}"><i class="fas fa-plus fa-fw"></i> &nbsp; CREAR MATERIAL</a>
+        </li>
+        <li>
+            <a href="{{ url('almacen/ingreso') }}"><i class="fas fa-people-carry"></i> &nbsp; INGRESO DE MATERIAL</a>
+        </li>
+        <li>
+            <a href="#"><i class="fas fa-truck-loading"></i> &nbsp; SALIDA DE MATERIAL</a>
+            {{-- <a href="{{ url('almacen/salida') }}"><i class="fas fa-truck-loading"></i> &nbsp; SALIDA DE MATERIAL</a> --}}
         </li>
     </ul>
 </div>

@@ -29,7 +29,6 @@ class OrdenCompraFormRequest extends FormRequest
 
             'num_orden'       => 'required',
             'fecha_solicitud' => 'required',
-            'fecha_entrega'   => 'required',
             'id_cliente'      => 'required',
             'id_pago'         => 'required',
 

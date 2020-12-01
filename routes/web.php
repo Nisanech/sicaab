@@ -32,6 +32,8 @@ Route::middleware(['auth'])->group(function(){
 
     Route::resource('administrador/roles', 'RolController');
     Route::resource('administrador/usuarios', 'UserController');
+    Route::get('users/{user}', 'UserController@show')->name('users.show')
+            ->middleware('permission:users.show');
     
     // Fin rutas módulo administrador
 
@@ -50,6 +52,7 @@ Route::middleware(['auth'])->group(function(){
     // Inicio rutas módulo almacén y logística
 
     Route::resource('almacen/materiales', 'MaterialController');
+    Route::resource('almacen/ingreso', 'IngresoMaterialController');
     Route::resource('almacen/remisiones', 'RemisionController');
     Route::resource('almacen/requerimiento_compra', 'RequerimientoCompraController');
 

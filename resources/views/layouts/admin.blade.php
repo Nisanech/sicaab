@@ -51,7 +51,8 @@
                     <ul>
                         @can('principal')
                         <li>
-                            <a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard</a>
+                            <a href="#"><i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard</a>
+                            {{-- <a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard</a> --}}
                         </li>
                         @endcan
                         
@@ -71,21 +72,21 @@
                                     <a href="{{route('cliente.index')}}"><i class="fas fa-users fa-fw"></i> &nbsp; Clientes </a>
                                 </li>
                                 @endcan
-                                @can('estado_pedidos.index')
+                                {{-- @can('estado_pedidos.index')
                                 <li>
                                     <a href="{{url('comercial/estado_pedidos')}}"><i class="fas fa-stopwatch fa-fw"></i> &nbsp; Estado de Pedido</a>
                                 </li> 
-                                @endcan
+                                @endcan --}}
                                 @can('orden_compra.index')
                                 <li>
                                     <a href="{{url('comercial/orden_compra')}}"><i class="fas fa-file-invoice fa-fw"></i> &nbsp; Orden de Compra</a>
                                 </li> 
                                 @endcan
-                                @can('orden_pago.index')
+                                {{-- @can('orden_pago.index')
                                 <li>
                                     <a href="{{url('comercial/orden_pago')}}"><i class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Orden de Pago</a>
                                 </li>
-                                @endcan
+                                @endcan --}}
                                 @can('productos.index')
                                 <li>
                                     <a href="{{url('comercial/productos')}}"><i class="fas fa-boxes fa-fw"></i> &nbsp; Productos</a>
@@ -108,22 +109,26 @@
                             <ul>
                                 @can('certificado_calidad.index')
                                 <li>
-                                    <a href="{{url('produccion/certificado_calidad')}}"><i class="fas fa-clipboard-check fa-fw"></i> &nbsp; Certificado de Calidad</a>
+                                    <a href="#"><i class="fas fa-clipboard-check fa-fw"></i> &nbsp; Certificado de Calidad</a>
+                                    {{-- <a href="{{url('produccion/certificado_calidad')}}"><i class="fas fa-clipboard-check fa-fw"></i> &nbsp; Certificado de Calidad</a> --}}
                                 </li>
                                 @endcan
                                 @can('ficha_tecnica.index')
                                 <li>
-                                    <a href="{{url('produccion/ficha_tecnica')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Ficha Técnica</a>
+                                    <a href="#"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Ficha Técnica</a>
+                                    {{-- <a href="{{url('produccion/ficha_tecnica')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Ficha Técnica</a> --}}
                                 </li>
                                 @endcan
                                 @can('orden_produccion.index')
                                 <li>
-                                    <a href="{{url('produccion/orden_produccion')}}"><i class="fas fa-file-alt fa-fw"></i> &nbsp; Orden de Producción</a>
+                                    <a href="#"><i class="fas fa-file-alt fa-fw"></i> &nbsp; Orden de Producción</a>
+                                    {{-- <a href="{{url('produccion/orden_produccion')}}"><i class="fas fa-file-alt fa-fw"></i> &nbsp; Orden de Producción</a> --}}
                                 </li>
                                 @endcan
                                 @can('planeacion.index')
                                 <li>
-                                    <a href="{{url('produccion/planeacion')}}"><i class="fas fa-puzzle-piece fa-fw"></i> &nbsp; Planeación de Producción</a>
+                                    <a href="#"><i class="fas fa-puzzle-piece fa-fw"></i> &nbsp; Planeación de Producción</a>
+                                    {{-- <a href="{{url('produccion/planeacion')}}"><i class="fas fa-puzzle-piece fa-fw"></i> &nbsp; Planeación de Producción</a> --}}
                                 </li>
                                 @endcan 
                             </ul>
@@ -138,7 +143,8 @@
                             <ul>
                                 @can('remisiones.index')
                                 <li>
-                                    <a href="{{url('almacen/remisiones')}}"><i class="fas fa-shipping-fast fa-fw"></i> &nbsp; Guía de Entrega </a>
+                                    <a href="#"><i class="fas fa-shipping-fast fa-fw"></i> &nbsp; Guía de Entrega </a>
+                                    {{-- <a href="{{url('almacen/remisiones')}}"><i class="fas fa-shipping-fast fa-fw"></i> &nbsp; Guía de Entrega </a> --}}
                                 </li>
                                 @endcan
                                 @can('materiales.index')
@@ -163,7 +169,8 @@
                             <ul>
                                 @can('roles.index')
                                 <li>
-                                    <a href="{{url('administrador/roles')}}"><i class="fas fa-user-shield"></i> &nbsp; Roles</a>
+                                    <a href="#"><i class="fas fa-user-shield"></i> &nbsp; Roles</a>
+                                    {{-- <a href="{{url('administrador/roles')}}"><i class="fas fa-user-shield"></i> &nbsp; Roles</a> --}}
                                 </li>
                                 @endcan
                                 @can('usuarios.index')

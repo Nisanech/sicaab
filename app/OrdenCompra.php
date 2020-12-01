@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrdenCompra extends Model
 {
-    protected $table='ordene_compra';
+    protected $table='orden_compra';
 
     protected $primaryKey="id_ordencompra";
 
@@ -16,7 +16,6 @@ class OrdenCompra extends Model
     protected $fillable = [
         'num_orden',
         'fecha_solicitud',
-        'fecha_entrega',
         'estado',
         'id_cliente',
         'id_pago'

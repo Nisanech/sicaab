@@ -335,9 +335,9 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name'        => 'Ingreso de materiales',
+            'name'        => 'Creación de materiales',
             'slug'        => 'materiales.create',
-            'description' => 'Ingresar materiales nuevos al sistema',
+            'description' => 'Crear materiales nuevos al sistema',
         ]);
 
         Permission::create([
@@ -356,6 +356,24 @@ class PermissionsTableSeeder extends Seeder
             'name'        => 'Eliminar material',
             'slug'        => 'materiales.destroy',
             'description' => 'Eliminar el material',
+        ]);
+
+        Permission::create([
+            'name'        => 'Listar ingreso de materiales',
+            'slug'        => 'ingreso.index',
+            'description' => 'Lista todos los ingresos de materiales al sistema',
+        ]);
+
+        Permission::create([
+            'name'        => 'Ingreso de materiales',
+            'slug'        => 'ingreso.create',
+            'description' => 'Ingresa materiales al sistema',
+        ]);
+
+        Permission::create([
+            'name'        => 'Ver detalle del ingreso del material',
+            'slug'        => 'ingreso.show',
+            'description' => 'Ver el detalle del ingreso',
         ]);
 
         // Fin permisos materiales
@@ -572,6 +590,40 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         // Fin permisos certificado de calidad
+
+        // Inicio permisos orden de servicio
+        
+        Permission::create([
+            'name'        => 'Listar órdenes de servicio',
+            'slug'        => 'orden_servicio.index',
+            'description' => 'Lista todas las órdenes de servicio',
+        ]);
+
+        Permission::create([
+            'name'        => 'Crear orden de servicio',
+            'slug'        => 'orden_servicio.create',
+            'description' => 'Crear orden de servicio para producto en proceso',
+        ]);
+
+        Permission::create([
+            'name'        => 'Ver detalle de la orden de servicio',
+            'slug'        => 'orden_servicio.show',
+            'description' => 'Ver el detalle de la orden de servicio',
+        ]);
+
+        Permission::create([
+            'name'        => 'Editar orden de servicio',
+            'slug'        => 'orden_servicio.edit',
+            'description' => 'Editar la orden de servicio',
+        ]);
+
+        Permission::create([
+            'name'        => 'Anular orden de servicio',
+            'slug'        => 'orden_servicio.destroy',
+            'description' => 'Anular orden de servicio',
+        ]);
+
+        // Fin permisos orden de servicio
         // Fin permisos módulo producción
 
         // Inicio permisos dashboard

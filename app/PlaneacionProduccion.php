@@ -16,7 +16,8 @@ class PlaneacionProduccion extends Model
     protected $fillable = [
         'inicio',
         'entrega',
-        'estado'
+        'estado',
+        'id_fichatecnica'
     ];
 
     // Campos que no se tendrán en cuenta en el modelo para el registro de datos
